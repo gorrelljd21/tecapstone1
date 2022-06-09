@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class MainMenu {
 
     public static void main(String[] args) {
+        PurchaseMenu menu = new PurchaseMenu();
         Inventory items = new Inventory();
 
         String[] mainMenu = {"[1] Display Items", "[2] Purchase", "[3] Exit"};
@@ -27,7 +28,7 @@ public class MainMenu {
                 System.out.printf("%s %s %s %s\n", item.getSlotLocation(), item.getProductName(), item.getPrice(), item.getProductType());
             }
         } else if (userSelection.equals(2)){
-            System.out.println("purchase");
+            menu.run();
         } else if (userSelection.equals(3)) {
             System.out.println("Goodbye.");
         }
