@@ -26,8 +26,10 @@ public class MainMenu {
             for(Item item : items.getInventory()){
                 System.out.printf("%s %s %s %s\n", item.getSlotLocation(), item.getProductName(), item.getPrice(), item.getProductType());
             }
-
+        } else if (userSelection.equals(2)){
+            System.out.println("purchase");
+        } else if (userSelection.equals(3)) {
+            System.out.println("Goodbye.");
         }
-
     }
 }
