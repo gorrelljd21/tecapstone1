@@ -30,6 +30,7 @@ public class Inventory {
 //        for (int i = 0; i < productArray.length; i++) {
 //            this.inventory.add(productArray[i]);
 //        }
+        // RESTOCK and loop through to ensure there are x5 items
 
     }
 
