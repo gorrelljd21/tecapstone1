@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Selection {
-    public static void main(String[] args) {
+    public void run() {
 
         String chips = "Crunch crunch, Yum!";
         String candy = "Munch munch, Yum!";

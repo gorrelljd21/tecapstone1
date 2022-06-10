@@ -10,7 +10,6 @@ public class Item {
     private String productType;
 
 
-
     public Item(String slotLocation, String productName, BigDecimal price, String productType) {
         this.slotLocation = slotLocation;
         this.productName = productName;
