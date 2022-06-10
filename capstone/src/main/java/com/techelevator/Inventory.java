@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Inventory {
 
-    List<Item> inventory = new ArrayList<>();
+    private List<Item> inventory = new ArrayList<>();
 
     public Inventory() {
 
@@ -21,15 +21,26 @@ public class Inventory {
                 String[] arrayString = input.split("\\|");
                 //convert third entry to BD index 2
                 BigDecimal stringToDecimal = new BigDecimal(arrayString[2]);
-                Item snack = new Item(arrayString[0], arrayString[1], stringToDecimal, arrayString[3]);
-                inventory.add(snack);
+                if (arrayString[3].equals("Chip")) {
+                    Chip chip = new Chip(arrayString[0], arrayString[1], stringToDecimal);
+                    inventory.add(chip);
+                } else if (arrayString[3].equals("Candy")) {
+                    Candy candy = new Candy(arrayString[0], arrayString[1], stringToDecimal);
+                    inventory.add(candy);
+                } else if (arrayString[3].equals("Drink")) {
+                    Drink drink = new Drink(arrayString[0], arrayString[1], stringToDecimal);
+                    inventory.add(drink);
+                } else if (arrayString[3].equals("Gum")) {
+                    Gum gum = new Gum(arrayString[0], arrayString[1], stringToDecimal);
+                    inventory.add(gum);
+                }
             }
         } catch (FileNotFoundException fnf) {
             System.out.println("File not here, bro!");
         }
-//        for (int i = 0; i < productArray.length; i++) {
-//            this.inventory.add(productArray[i]);
-//        }
+
+
+
         // RESTOCK and loop through to ensure there are x5 items
 
     }
