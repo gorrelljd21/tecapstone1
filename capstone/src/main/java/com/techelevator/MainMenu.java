@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//errors
+
 public class MainMenu {
 
     public static void main(String[] args) {
@@ -39,7 +41,6 @@ public class MainMenu {
             } else if (userSelection.equals(3)) {
                 System.out.println("Goodbye.");
                 mainRunning = false;
-
             }
 
         } while (mainRunning);

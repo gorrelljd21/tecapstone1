@@ -3,6 +3,9 @@ package com.techelevator;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+//errors - sold out, incorrect input
+//restock
+
 public class PurchaseMenu {
     public void run() {
 
@@ -13,6 +16,7 @@ public class PurchaseMenu {
         BigDecimal defaultBalance = new BigDecimal("0.00");
         BigDecimal balance = defaultBalance;
         Money money = new Money();
+
         boolean addmore = true;
         boolean purchaseRunning = true;
         boolean addMoney = true;
@@ -59,7 +63,7 @@ public class PurchaseMenu {
                 }
                 System.out.println("==========================================");
                 Scanner codeSelection = new Scanner(System.in);
-                System.out.printf("$%s", balance);
+                System.out.printf("Your balance is $%s\n", balance);
                 System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
                 String userCodeSelection = codeSelection.nextLine();
 
@@ -79,9 +83,15 @@ public class PurchaseMenu {
                                 System.out.println(gum);
                                 break;
                         }
+                        BigDecimal price = item.getPrice();
+                        balance = balance.subtract(price);
+
+
                     }
+
                 }
-                System.out.printf("Your remaining balance is: $%s", balance);
+
+                System.out.printf("Your balance is: $%s\n", balance);
 
                 Scanner anotherProduct = new Scanner(System.in);
                 String wantAnotherSelection = "Do you want to make another selection? Y/N";
@@ -100,11 +110,12 @@ public class PurchaseMenu {
                 // if no more, go back to main menu
             } else if (userSelection.equals(3)) {
 
+                BigDecimal remainingBalance = balance;
                 // to return change
                 BigDecimal updatedBalance = balance;
                 balance = BigDecimal.valueOf(0);
-                System.out.printf("here is your change: $%s\n", balance);
-                System.out.printf("Machine balance: $%s\n", updatedBalance);
+                System.out.printf("here is your change: $%s\n", remainingBalance);
+                System.out.printf("Machine balance: $%s\n", balance);
                 purchaseRunning = false;
             }
 
