@@ -16,11 +16,11 @@ public class PurchaseMenu {
         BigDecimal defaultBalance = new BigDecimal("0.00");
         BigDecimal balance = defaultBalance;
         Money money = new Money();
+        Log tranxLog = new Log();
 
         boolean addmore = true;
         boolean purchaseRunning = true;
         boolean addMoney = true;
-
 
         do {
 
@@ -48,9 +48,12 @@ public class PurchaseMenu {
 
                     if (userAnswer.equalsIgnoreCase("y")) {
                         balance = money.getBalance();
+                        tranxLog.writeToLog();
+
                         addMoney = true;
                     } else if (userAnswer.equalsIgnoreCase("n")) {
                         balance = money.getBalance();
+                        tranxLog.writeToLog();
                         addMoney = false;
                     }
                 } while (addMoney);
@@ -85,10 +88,7 @@ public class PurchaseMenu {
                         }
                         BigDecimal price = item.getPrice();
                         balance = balance.subtract(price);
-
-
                     }
-
                 }
 
                 System.out.printf("Your balance is: $%s\n", balance);
