@@ -13,19 +13,10 @@ public class Money {
         return balance;
     }
 
-    public void calculatingMoney() {
+    public void calculatingMoney(Double money) {
 
-        Scanner moneyInput = new Scanner(System.in);
-
-        System.out.printf("Current Balance: $%s\n", balance);
-        System.out.println("How much money do you want to feed?");
-        System.out.println("Note: please enter whole dollar values in x.xx format.");
-        String fedMoney = moneyInput.nextLine();
-
-        BigDecimal fedMoneyBD = new BigDecimal(fedMoney);
-
+        BigDecimal fedMoneyBD = new BigDecimal(money);
         balance = balance.add(fedMoneyBD);
-        System.out.printf("New Balance: $%s\n", balance);
 
     }
 }

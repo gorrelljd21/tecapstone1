@@ -8,7 +8,26 @@ public class Item {
     private String productName;
     private BigDecimal price;
     private String productType;
+    private String chips = "Crunch crunch, Yum!";
+    private String candy = "Munch munch, Yum!";
+    private String drink = "Glug glug, Yum!";
+    private String gum = "Chew chew, Yum!";
 
+    public String getChips() {
+        return chips;
+    }
+
+    public String getCandy() {
+        return candy;
+    }
+
+    public String getDrink() {
+        return drink;
+    }
+
+    public String getGum() {
+        return gum;
+    }
 
     public Item(String slotLocation, String productName, BigDecimal price, String productType) {
         this.slotLocation = slotLocation;
@@ -36,6 +55,8 @@ public class Item {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+
 
 }
 
