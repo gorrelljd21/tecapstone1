@@ -56,16 +56,17 @@ public class MainMenu {
                         BigDecimal fedMoney = new BigDecimal(userInput.nextLine());
 
                         vendingMachine.getMoney().addMoney(fedMoney);
+                        tranxLog.writeToLog("FEED MONEY", fedMoney, vendingMachine.getMoney().getBalance());
 
                         String addMoreMoney = "Do you want to add more money? Y/N";
                         System.out.println(addMoreMoney);
                         String userAnswer = userInput.nextLine();
 
                         if (userAnswer.equalsIgnoreCase("y")) {
-                            tranxLog.writeToLog();
+
                             addMoney = true;
                         } else if (userAnswer.equalsIgnoreCase("n")) {
-                            tranxLog.writeToLog();
+
                             addMoney = false;
                         }
 
@@ -82,8 +83,14 @@ public class MainMenu {
                     System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
                     String userCodeSelection = codeSelection.nextLine();
 
-                    String sound = vendingMachine.purchaseItem(userCodeSelection).getSound();
-                    System.out.printf("%s %n", sound);
+
+                    Item item = vendingMachine.purchaseItem(userCodeSelection);
+
+                    if(item != null) {
+                        String sound = item.getSound();
+                        System.out.printf("%s %n", sound);
+                        tranxLog.writeToLog(item.getProductName(), item.getPrice(), vendingMachine.getMoney().getBalance());
+                    }
 
                     System.out.printf("Your balance is: $%s\n", vendingMachine.getMoney().getBalance());
                     Scanner anotherProduct = new Scanner(System.in);
@@ -99,9 +106,13 @@ public class MainMenu {
                         System.out.println("purchase menu");
                     }
 
-                } else if (userSelection.equals(3)) {
-                    System.out.printf("here is your change: $%s\n", vendingMachine.getMoney());
-                    System.out.printf("Machine balance: $%s\n", vendingMachine.getMoney().getBalance());
+                    } else if (purchaseMenuSelection.equals(3)) {
+
+
+                    System.out.printf("here is your change: $%s%n", vendingMachine.getMoney().getBalance());
+                    System.out.printf("Machine balance: $%s%n", vendingMachine.money.zeroBalance());
+                    tranxLog.writeToLog("GIVE CHANGE", vendingMachine.getMoney().getBalance(), vendingMachine.money.zeroBalance());
+
 
                 } else if (userSelection.equals(3)) {
                     System.out.println("Goodbye.");
