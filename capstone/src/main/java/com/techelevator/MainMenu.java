@@ -82,19 +82,8 @@ public class MainMenu {
                     System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
                     String userCodeSelection = codeSelection.nextLine();
 
-                    vendingMachine.purchaseItem(userCodeSelection);
-
-                    // TODO Handle the sound
-//                    for (Item item : items.getInventory()) {
-//                        if (userCodeSelection.equalsIgnoreCase(item.getSlotLocation())) {
-//
-//                            String sound = item.getSound();
-//                            System.out.printf("%s %n", sound);
-//
-//                            BigDecimal price = item.getPrice();
-//                            balance = money.getBalance().subtract(price);
-//                        }
-//                    }
+                    String sound = vendingMachine.purchaseItem(userCodeSelection).getSound();
+                    System.out.printf("%s %n", sound);
 
                     System.out.printf("Your balance is: $%s\n", vendingMachine.getMoney().getBalance());
                     Scanner anotherProduct = new Scanner(System.in);
