@@ -47,7 +47,9 @@ public class MainMenu {
                 Integer purchaseMenuSelection = Integer.parseInt(userInput.nextLine());
 
                 if (purchaseMenuSelection.equals(1)) {
+
                     boolean addMoney = true;
+
                     do {
 
                         System.out.printf("Current Balance: $%s\n", vendingMachine.getMoney().getBalance());
@@ -74,51 +76,51 @@ public class MainMenu {
                 } else if (purchaseMenuSelection.equals(2)) {
 
                     boolean anotherPurchase = true;
-                    for (Item item : vendingMachine.getInventory().getInventory()) {
-                        System.out.printf("%s %s %s %n", item.getSlotLocation(), item.getProductName(), item.getPrice());
-                    }
-                    System.out.println("==========================================");
-                    Scanner codeSelection = new Scanner(System.in);
-                    System.out.printf("Your balance is $%s\n", vendingMachine.getMoney().getBalance());
-                    System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
-                    String userCodeSelection = codeSelection.nextLine();
+
+                    do {
+
+                        for (Item item : vendingMachine.getInventory().getInventory()) {
+                            System.out.printf("%s %s %s %n", item.getSlotLocation(), item.getProductName(), item.getPrice());
+                        }
+                        System.out.println("==========================================");
+                        System.out.printf("Your balance is $%s\n", vendingMachine.getMoney().getBalance());
+                        System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
+                        String userCodeSelection = userInput.nextLine();
 
 
-                    Item item = vendingMachine.purchaseItem(userCodeSelection);
+                        Item item = vendingMachine.purchaseItem(userCodeSelection);
 
-                    if(item != null) {
-                        String sound = item.getSound();
-                        System.out.printf("%s %n", sound);
-                        tranxLog.writeToLog(item.getProductName(), item.getPrice(), vendingMachine.getMoney().getBalance());
-                    }
+                        if (item != null) {
+                            String sound = item.getSound();
+                            System.out.printf("%s %n", sound);
+                            tranxLog.writeToLog(item.getProductName(), item.getPrice(), vendingMachine.getMoney().getBalance());
+                        }
 
-                    System.out.printf("Your balance is: $%s\n", vendingMachine.getMoney().getBalance());
-                    Scanner anotherProduct = new Scanner(System.in);
-                    String wantAnotherSelection = "Do you want to make another selection? Y/N";
-                    System.out.println(wantAnotherSelection);
-                    String wantsAnother = anotherProduct.nextLine();
+                        System.out.printf("Your balance is: $%s\n", vendingMachine.getMoney().getBalance());
+                       System.out.println("Do you want to make another selection? Y/N");
+                        String wantsAnother = userInput.nextLine();
 
-                    if (wantsAnother.equalsIgnoreCase("y")) {
-                        anotherPurchase = true;
-                    } else if (wantsAnother.equalsIgnoreCase("n")) {
-                        //return to purchase menu
-                        anotherPurchase = false;
-                        System.out.println("purchase menu");
-                    }
+                        if (wantsAnother.equalsIgnoreCase("y")) {
+                            anotherPurchase = true;
+                        } else if (wantsAnother.equalsIgnoreCase("n")) {
+                            anotherPurchase = false;
 
-                    } else if (purchaseMenuSelection.equals(3)) {
+                        }
+                    } while (anotherPurchase);
+
+                } else if (purchaseMenuSelection.equals(3)) {
 
 
-                    System.out.printf("here is your change: $%s%n", vendingMachine.getMoney().getBalance());
-                    System.out.printf("Machine balance: $%s%n", vendingMachine.money.zeroBalance());
+                    vendingMachine.getMoney().makeChange(vendingMachine.getMoney().getBalance());
+                    System.out.printf("Machine balance: $%s\n", vendingMachine.money.zeroBalance());
                     tranxLog.writeToLog("GIVE CHANGE", vendingMachine.getMoney().getBalance(), vendingMachine.money.zeroBalance());
 
 
-                } else if (userSelection.equals(3)) {
-                    System.out.println("Goodbye.");
-                    mainRunning = false;
                 }
 
+            } else if (userSelection.equals(3)) {
+                System.out.println("Goodbye.");
+                mainRunning = false;
             }
 
         } while (mainRunning);
