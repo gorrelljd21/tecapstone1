@@ -24,7 +24,7 @@ public class Money {
         int quarters = (int)(change/25);
         quarters = quarters % 25;
         int dimes = (int)(change/10);
-        dimes= dimes % 10;
+        dimes = dimes % 10;
         int nickles = (int)(change/5);
         nickles = nickles % 5;
         System.out.printf("Your change is: %s quarters %s dimes %s nickles %n", quarters, dimes, nickles);
