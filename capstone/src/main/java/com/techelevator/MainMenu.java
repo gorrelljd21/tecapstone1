@@ -57,8 +57,9 @@ public class MainMenu {
                         System.out.println("Note: please enter whole dollar values in x.xx format.");
                         BigDecimal fedMoney = new BigDecimal(userInput.nextLine());
 
+                        final String LOG_OUTPUT_FEEDING_MONEY = "FEED MONEY";
                         vendingMachine.getMoney().addMoney(fedMoney);
-                        tranxLog.writeToLog("FEED MONEY", fedMoney, vendingMachine.getMoney().getBalance());
+                        tranxLog.writeToLog(LOG_OUTPUT_FEEDING_MONEY, fedMoney, vendingMachine.getMoney().getBalance());
 
                         String addMoreMoney = "Do you want to add more money? Y/N";
                         System.out.println(addMoreMoney);
@@ -110,10 +111,10 @@ public class MainMenu {
 
                 } else if (purchaseMenuSelection.equals(3)) {
 
-
+                    final String LOG_OUTPUT_GIVING_CHANGE = "GIVE CHANGE";
                     vendingMachine.getMoney().makeChange(vendingMachine.getMoney().getBalance());
                     System.out.printf("Machine balance: $%s\n", vendingMachine.money.zeroBalance());
-                    tranxLog.writeToLog("GIVE CHANGE", vendingMachine.getMoney().getBalance(), vendingMachine.money.zeroBalance());
+                    tranxLog.writeToLog(LOG_OUTPUT_GIVING_CHANGE, vendingMachine.getMoney().getBalance(), vendingMachine.money.zeroBalance());
 
 
                 }

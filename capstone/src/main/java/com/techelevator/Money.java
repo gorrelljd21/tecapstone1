@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class Money {
 
-    private final BigDecimal QUARTER = new BigDecimal("0.25");
-    private final BigDecimal DIME = new BigDecimal("0.10");
-    private final BigDecimal NICKEL = new BigDecimal("0.05");
+    BigDecimal quarter = BigDecimal.valueOf(0.25);
+    BigDecimal dime = BigDecimal.valueOf(0.10);
+    BigDecimal nickel = BigDecimal.valueOf(0.05);
 
 
     private BigDecimal balance = new BigDecimal("0.00");
@@ -19,15 +19,28 @@ public class Money {
     }
 
     public void makeChange(BigDecimal balance){
-        double change;
-        change = (balance.doubleValue() * 100);
-        int quarters = (int)(change/25);
-        quarters = quarters % 25;
-        int dimes = (int)(change/10);
-        dimes = dimes % 10;
-        int nickles = (int)(change/5);
-        nickles = nickles % 5;
-        System.out.printf("Your change is: %s quarters %s dimes %s nickles %n", quarters, dimes, nickles);
+
+        BigDecimal quartersReturned = balance.divideToIntegralValue(quarter);
+        BigDecimal qR = quartersReturned.divide(quarter);
+        BigDecimal dimesReturned = quartersReturned.subtract(quarter.multiply(BigDecimal.valueOf(qR.intValue())));
+        BigDecimal dR = dimesReturned.divide(dime);
+        BigDecimal nicklesReturned = dimesReturned.subtract(dime.multiply(BigDecimal.valueOf(dR.intValue())));
+        BigDecimal nR = nicklesReturned.divide(nickel);
+
+
+        //        double change = 0.00;
+//
+//        int quarters = (int)(change/25);
+//        quarters = quarters % 25;
+//
+//        int dimes = (int)(change/10);
+//        dimes= dimes % 10;
+//
+//        int nickles = (int)(change/5);
+//        nickles = nickles % 5;
+
+        System.out.printf("Your change is: %s quarters, %s dimes, and %s nickles %n", quartersReturned.intValue(), dR.intValue(), nR.intValue());
+
     }
 
     public BigDecimal zeroBalance() {

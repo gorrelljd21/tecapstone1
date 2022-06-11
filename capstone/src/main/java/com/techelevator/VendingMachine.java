@@ -4,7 +4,6 @@ public class VendingMachine {
 
     Money money = new Money();
     Inventory inventory = new Inventory();
-    Log txLog = new Log();
 
     public Item purchaseItem(String slotLocation) {
         for (Item item : inventory.getInventory()) {
