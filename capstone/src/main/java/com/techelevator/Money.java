@@ -20,6 +20,8 @@ public class Money {
 
     public void makeChange(BigDecimal balance) {
 
+
+
 //        BigDecimal quartersReturned = balance.divideToIntegralValue(quarter);
 //        BigDecimal qR = quartersReturned.divide(quarter);
 //        BigDecimal dimesReturned = quartersReturned.subtract(quarter.multiply(BigDecimal.valueOf(qR.intValue())));
@@ -38,11 +40,11 @@ public class Money {
 //
 //        int nickles = dimes - (int)(change/5);
 //        nickles = nickles % 5;
-
+//
+        balance = balance.multiply(BigDecimal.valueOf(100));
         int qChange = 0;
         int dChange = 0;
         int nChange = 0;
-        balance = balance.multiply(BigDecimal.valueOf(100));
 
         while (balance.intValue() >= quarter.intValue()) {
             qChange += 1;
@@ -56,7 +58,6 @@ public class Money {
                 balance = balance.subtract(nickel);
             }
         }
-
 
         System.out.printf("Your change is: %s quarters, %s dimes, and %s nickels %n", qChange, dChange, nChange);
 
