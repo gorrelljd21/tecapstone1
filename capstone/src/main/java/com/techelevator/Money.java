@@ -8,10 +8,9 @@ import java.util.Scanner;
 
 public class Money {
 
-//    BigDecimal quarter = BigDecimal.valueOf(0.25);
-//    BigDecimal dime = BigDecimal.valueOf(0.10);
-//    BigDecimal nickel = BigDecimal.valueOf(0.05);
-
+    private BigDecimal quarter = BigDecimal.valueOf(25);
+    private BigDecimal dime = BigDecimal.valueOf(10);
+    private BigDecimal nickel = BigDecimal.valueOf(5);
 
     private BigDecimal balance = new BigDecimal("0.00");
 
@@ -19,7 +18,7 @@ public class Money {
         return balance;
     }
 
-    public void makeChange(BigDecimal balance){
+    public void makeChange(BigDecimal balance) {
 
 //        BigDecimal quartersReturned = balance.divideToIntegralValue(quarter);
 //        BigDecimal qR = quartersReturned.divide(quarter);
@@ -39,26 +38,27 @@ public class Money {
 //
 //        int nickles = dimes - (int)(change/5);
 //        nickles = nickles % 5;
-        int change = balance.multiply(BigDecimal.valueOf(100)).intValue();
-        int quarters = 0;
-        int dimes = 0;
-        int nickels = 0;
-//
-        while (change >= 25) {
-            quarters += 1;
-            change -= 25;
+
+        int qChange = 0;
+        int dChange = 0;
+        int nChange = 0;
+        balance = balance.multiply(BigDecimal.valueOf(100));
+
+        while (balance.intValue() >= quarter.intValue()) {
+            qChange += 1;
+            balance = balance.subtract(quarter);
         }
-        while (change >= 10) {
-            dimes += 1;
-            change -= 10;
-            while (change >= 5) {
-                nickels += 1;
-                change -= 5;
+        while (balance.intValue() >= dime.intValue()) {
+            dChange += 1;
+            balance = balance.subtract(dime);
+            while (balance.intValue() >= nickel.intValue()) {
+                nChange += 1;
+                balance = balance.subtract(nickel);
             }
         }
 
 
-        System.out.printf("Your change is: %s quarters, %s dimes, and %s nickles %n", quarters, dimes, nickels);
+        System.out.printf("Your change is: %s quarters, %s dimes, and %s nickels %n", qChange, dChange, nChange);
 
     }
 
@@ -67,11 +67,11 @@ public class Money {
         return zeroBalance;
     }
 
-    public void debitBalance(BigDecimal price){
+    public void debitBalance(BigDecimal price) {
         balance = balance.subtract(price);
     }
 
-    public void addMoney(BigDecimal cash){
+    public void addMoney(BigDecimal cash) {
         balance = balance.add(cash);
     }
 
