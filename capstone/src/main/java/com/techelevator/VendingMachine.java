@@ -9,10 +9,12 @@ public class VendingMachine {
         for (Item item : inventory.getInventory()) {
             if(item.getSlotLocation().equalsIgnoreCase(slotLocation)){
                 if(item.getPrice().compareTo(money.getBalance()) <= 0){
-                    if(item.getStock() >= 1){
+                    if(item.getIsInStock()){
                        item.debitStock();
                        money.debitBalance(item.getPrice());
                        return item;
+                    } else {
+                        return item;
                     }
                 }
             }
@@ -27,4 +29,7 @@ public class VendingMachine {
     public Inventory getInventory() {
         return inventory;
     }
+
+
+
 }

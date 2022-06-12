@@ -20,27 +20,6 @@ public class Money {
 
     public void makeChange(BigDecimal balance) {
 
-
-
-//        BigDecimal quartersReturned = balance.divideToIntegralValue(quarter);
-//        BigDecimal qR = quartersReturned.divide(quarter);
-//        BigDecimal dimesReturned = quartersReturned.subtract(quarter.multiply(BigDecimal.valueOf(qR.intValue())));
-//        BigDecimal dR = dimesReturned.divide(dime);
-//        BigDecimal nicklesReturned = dimesReturned.subtract(dime.multiply(BigDecimal.valueOf(dR.intValue())));
-//        BigDecimal nR = nicklesReturned.divide(nickel);
-//
-//        double change = balance.doubleValue();
-//        change = change * 100;
-//
-//        int quarters = (int)(change/25);
-//        quarters = quarters % 25;
-//
-//        int dimes = quarters - (int)(change/10);
-//        dimes = dimes % 10;
-//
-//        int nickles = dimes - (int)(change/5);
-//        nickles = nickles % 5;
-//
         balance = balance.multiply(BigDecimal.valueOf(100));
         int qChange = 0;
         int dChange = 0;

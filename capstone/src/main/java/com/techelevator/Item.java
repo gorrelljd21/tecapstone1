@@ -8,15 +8,13 @@ public abstract class Item{
     private String productName;
     private BigDecimal price;
     private int stock = 5;
+    private boolean isInStock = true;
+
 
     public Item(String slotLocation, String productName, BigDecimal price) {
         this.slotLocation = slotLocation;
         this.productName = productName;
         this.price = price;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
     }
 
     public String getSlotLocation() {
@@ -25,6 +23,10 @@ public abstract class Item{
 
     public String getProductName() {
         return productName;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
     }
 
     public void setPrice(BigDecimal price) {
@@ -38,7 +40,19 @@ public abstract class Item{
     }
 
     public void debitStock(){
-        stock = stock - 1;
+        if(stock > 0){
+            stock = stock - 1;
+        } else {
+            setInStock(false);
+        }
+    }
+
+    public boolean getIsInStock() {
+        return isInStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        this.isInStock = inStock;
     }
 
 }
