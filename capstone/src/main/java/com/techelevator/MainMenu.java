@@ -30,6 +30,9 @@ public class MainMenu {
             System.out.println("Please make a selection by number: ");
             Integer userSelection = Integer.parseInt(userInput.nextLine());
 
+            //TODO create handle
+            //create handle to see if their selection is 1 2 or 3
+
             if (userSelection.equals(1)) {
                 System.out.println("==========================================");
                 for (Item item : vendingMachine.getInventory().getInventory()) {
@@ -45,6 +48,9 @@ public class MainMenu {
                 System.out.println("\n");
                 System.out.println("Please make a selection by number: ");
                 Integer purchaseMenuSelection = Integer.parseInt(userInput.nextLine());
+
+                //TODO create handle
+                //create handle to see if their selection is 1 2 or 3
 
                 if (purchaseMenuSelection.equals(1)) {
 
@@ -88,13 +94,20 @@ public class MainMenu {
                         System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
                         String userCodeSelection = userInput.nextLine();
 
+                        //if item in stock then if they have the funds the purchase funds
 
                         Item item = vendingMachine.purchaseItem(userCodeSelection);
 
                         if (item != null) {
-                            String sound = item.getSound();
-                            System.out.printf("%s %n", sound);
-                            tranxLog.writeToLog(item.getProductName(), item.getPrice(), vendingMachine.getMoney().getBalance());
+                            if (item.getIsInStock()) {
+                                String sound = item.getSound();
+                                System.out.printf("%s %n", sound);
+                                tranxLog.writeToLog(item.getProductName(), item.getPrice(), vendingMachine.getMoney().getBalance());
+                            } else {
+                                System.out.println("Item out of stock. Make a different selection.");
+                            }
+                        } else {
+                            System.out.println("Insufficient funds.");
                         }
 
                         System.out.printf("Your balance is: $%s\n", vendingMachine.getMoney().getBalance());
@@ -115,8 +128,6 @@ public class MainMenu {
                     vendingMachine.getMoney().makeChange(vendingMachine.getMoney().getBalance());
                     System.out.printf("Machine balance: $%s\n", vendingMachine.money.zeroBalance());
                     tranxLog.writeToLog(LOG_OUTPUT_GIVING_CHANGE, vendingMachine.getMoney().getBalance(), vendingMachine.money.zeroBalance());
-
-
                 }
 
             } else if (userSelection.equals(3)) {
@@ -126,8 +137,5 @@ public class MainMenu {
 
         } while (mainRunning);
     }
-
-
 }
 
-//
