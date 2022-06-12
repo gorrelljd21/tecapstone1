@@ -25,8 +25,9 @@ public class VendingMachineTests {
         public void whenNotEnoughMoney_returnINSUFFICIENTFUNDS() {
             VendingMachine vendingMachine = new VendingMachine();
             Money money = new Money();
+            BigDecimal fedMoney = BigDecimal.valueOf(0.34);
 
-            BigDecimal actual = vendingMachine.getMoney().zeroBalance();
+            BigDecimal actual = vendingMachine.getMoney().addMoney(fedMoney);
 
             Assert.assertEquals("Insufficient funds", vendingMachine.purchaseItem("C1").getPrice() , actual);
         }
