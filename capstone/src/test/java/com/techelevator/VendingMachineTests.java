@@ -11,24 +11,24 @@ public class VendingMachineTests {
         public void whenWrongSlotLocationSelected_returnIVALIDINPUT() {
             //arrange
             VendingMachine vendingMachine = new VendingMachine();
-            String wrongSlotLocation = "D5";
+
 
             //act
-            Item actual = vendingMachine.purchaseItem(wrongSlotLocation);
+          Item actual = vendingMachine.purchaseItem("D5");
 
 
             //assert
-            Assert.assertEquals("Invalid input", "D3", actual);
+            Assert.assertEquals("Invalid input", vendingMachine.purchaseItem("D3"), actual);
         }
 
         @Test
         public void whenNotEnoughMoney_returnINSUFFICIENTFUNDS() {
             VendingMachine vendingMachine = new VendingMachine();
-            BigDecimal notEnoughFunds = new BigDecimal("1.00");
+            Money money = new Money();
 
-            BigDecimal actual = vendingMachine.getMoney().getBalance();
+            BigDecimal actual = vendingMachine.getMoney().zeroBalance();
 
-            Assert.assertEquals("Insufficient funds",notEnoughFunds,actual);
+            Assert.assertEquals("Insufficient funds", vendingMachine.purchaseItem("C1").getPrice() , actual);
         }
 
         @Test
