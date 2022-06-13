@@ -14,6 +14,7 @@ public class MainMenu {
         boolean mainRunning = true;
         Log tranxLog = new Log();
         VendingMachine vendingMachine = new VendingMachine();
+        boolean isMainMenuValid = false;
 
         do {
 
@@ -31,7 +32,46 @@ public class MainMenu {
             Integer userSelection = Integer.parseInt(userInput.nextLine());
 
             //TODO create handle
+//             System.out.println("Enter a 3 digit number: ");
+//        int digit = newScan.nextInt();
+//
+//        while(digit > 1000 || digit < 100)
+//            {
+//             System.out.println("Error! Please enter a 3 digit number: ");
+//             digit = newScan.nextInt();
+//            }
+//
+//        System.out.println(digit);
             //create handle to see if their selection is 1 2 or 3
+            do {
+                try {
+                    while (!userSelection.equals("1") || !userSelection.equals("2") || !userSelection.equals("3")) {
+                        System.out.println("Please make a numerical selection as shown above");
+                        userSelection = Integer.parseInt(userInput.nextLine());
+                    }
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Please make a numerical selection as shown above");
+                }
+            } while (!isMainMenuValid);
+
+
+//            try {
+//                    if (!userSelection.equals(1)) {
+//                        System.out.println("Please make a correct selection");
+//                        isMainMenuValid = true;
+//                    } else if (!userSelection.equals(2)) {
+//                        System.out.println("Please make a correct selection");
+//                        isMainMenuValid = true;
+//                    } else if (!userSelection.equals(3)) {
+//                        System.out.println("Please make a correct selection");
+//                        isMainMenuValid = true;
+//                    } else if(!userSelection.equals("")){
+//                        System.out.println("Please make a numbered selection");
+//                    }
+//                } catch (NumberFormatException nfe) {
+//                    System.out.println("Invalid selection");
+//                }
+
 
             if (userSelection.equals(1)) {
                 System.out.println("==========================================");
@@ -51,6 +91,13 @@ public class MainMenu {
 
                 //TODO create handle
                 //create handle to see if their selection is 1 2 or 3
+                if(!userSelection.equals(1)) {
+                    System.out.println("Please make a correct selection");
+                } else if (!userSelection.equals(2)) {
+                    System.out.println("Please make a correct selection");
+                } else if (!userSelection.equals(3)) {
+                    System.out.println("Please make a correct selection");
+                }
 
                 if (purchaseMenuSelection.equals(1)) {
 
