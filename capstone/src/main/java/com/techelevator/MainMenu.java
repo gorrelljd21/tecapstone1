@@ -32,6 +32,15 @@ public class MainMenu {
 
             //TODO create handle
             //create handle to see if their selection is 1 2 or 3
+            if(!userSelection.equals(1)) {
+                System.out.println("Please make a correct selection");
+            } else if (!userSelection.equals(2)) {
+                System.out.println("Please make a correct selection");
+            } else if (!userSelection.equals(3)) {
+                System.out.println("Please make a correct selection");
+            } else if (userSelection.equals("")) {
+                System.out.println("Please make a numbered selection");
+            }
 
             if (userSelection.equals(1)) {
                 System.out.println("==========================================");
@@ -51,6 +60,13 @@ public class MainMenu {
 
                 //TODO create handle
                 //create handle to see if their selection is 1 2 or 3
+                if(!userSelection.equals(1)) {
+                    System.out.println("Please make a correct selection");
+                } else if (!userSelection.equals(2)) {
+                    System.out.println("Please make a correct selection");
+                } else if (!userSelection.equals(3)) {
+                    System.out.println("Please make a correct selection");
+                }
 
                 if (purchaseMenuSelection.equals(1)) {
 
