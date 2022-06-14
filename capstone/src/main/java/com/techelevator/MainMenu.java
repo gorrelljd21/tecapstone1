@@ -33,6 +33,9 @@ public class MainMenu {
                 System.out.println("Please make a selection by number.");
                 Integer userSelection = Integer.parseInt(userInput.nextLine());
 
+                if (userSelection >= 4) {
+                    System.out.println("Please enter a valid number selection");
+                }
 
                 if (userSelection.equals(1)) {
                     System.out.println("==========================================");
@@ -50,6 +53,9 @@ public class MainMenu {
                     System.out.println("Please make a selection by number: ");
                     Integer purchaseMenuSelection = Integer.parseInt(userInput.nextLine());
 
+                    if (purchaseMenuSelection >= 4) {
+                        System.out.println("Please enter a valid number selection");
+                    }
 
                     if (purchaseMenuSelection.equals(1)) {
 
