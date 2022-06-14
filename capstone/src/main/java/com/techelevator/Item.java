@@ -8,7 +8,6 @@ public abstract class Item {
     private String productName;
     private BigDecimal price;
     private int stock = 5;
-    private boolean isInStock = true;
 
 
     public Item(String slotLocation, String productName, BigDecimal price) {
@@ -47,19 +46,12 @@ public abstract class Item {
     public void debitStock() {
         if (stock > 0) {
             stock = stock - 1;
-        } else {
-            setInStock(false);
+        }
+    }
+        public boolean getIsInStock () {
+            return stock > 0;
         }
     }
 
-    public boolean getIsInStock() {
 
-        return isInStock;
-    }
-
-    public void setInStock(boolean inStock) {
-
-        this.isInStock = inStock;
-    }
-}
 

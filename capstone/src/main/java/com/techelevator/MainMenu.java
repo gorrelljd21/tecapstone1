@@ -15,7 +15,6 @@ public class MainMenu {
         Log tranxLog = new Log();
         boolean mainRunning = true;
 
-
         do {
 
             try {
@@ -106,8 +105,6 @@ public class MainMenu {
                             System.out.printf("Your balance is $%s\n", vendingMachine.getMoney().getBalance());
                             System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
                             String userCodeSelection = userInput.nextLine();
-
-
 
                             Item item = vendingMachine.purchaseItem(userCodeSelection);
 
