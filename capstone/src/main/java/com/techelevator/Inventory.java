@@ -37,7 +37,7 @@ public class Inventory {
                     }
                 }
             } catch (FileNotFoundException fnf) {
-                System.out.println("File not here, bro!");
+                System.out.println("File not here.");
             }
 
 

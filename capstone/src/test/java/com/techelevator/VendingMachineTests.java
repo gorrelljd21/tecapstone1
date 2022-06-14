@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.Formatter;
 
 public class VendingMachineTests {
 
@@ -23,6 +24,11 @@ public class VendingMachineTests {
         @Test
 
         public void whenNotWholeDollarAmount_returnNOTWHOLEDOLLAR() {
+            VendingMachine vendingMachine = new VendingMachine();
+            Money money = new Money();
+
+
+
 
         }
 }
