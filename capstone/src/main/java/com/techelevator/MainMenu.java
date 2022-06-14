@@ -57,25 +57,32 @@ public class MainMenu {
 
                         do {
 
-                            System.out.printf("Current Balance: $%s\n", vendingMachine.getMoney().getBalance());
-                            System.out.println("How much money do you want to feed?");
-                            System.out.println("Note: please enter whole dollar values in x.xx format.");
-                            BigDecimal fedMoney = new BigDecimal(userInput.nextLine());
+                            try {
+                                System.out.printf("Current Balance: $%s\n", vendingMachine.getMoney().getBalance());
+                                System.out.println("How much money do you want to feed?");
+                                System.out.println("Note: please enter whole dollar values in x.xx format.");
+                                BigDecimal fedMoney = new BigDecimal(userInput.nextLine());
+                                    if (!vendingMachine.money.isWholeNumber(fedMoney))  {
+                                        throw new NumberFormatException("Invalid input.");
+                                    }
 
-                            final String LOG_OUTPUT_FEEDING_MONEY = "FEED MONEY";
-                            vendingMachine.getMoney().addMoney(fedMoney);
-                            tranxLog.writeToLog(LOG_OUTPUT_FEEDING_MONEY, fedMoney, vendingMachine.getMoney().getBalance());
+                                final String LOG_OUTPUT_FEEDING_MONEY = "FEED MONEY";
+                                vendingMachine.getMoney().addMoney(fedMoney);
+                                tranxLog.writeToLog(LOG_OUTPUT_FEEDING_MONEY, fedMoney, vendingMachine.getMoney().getBalance());
 
-                            String addMoreMoney = "Do you want to add more money? Y/N";
-                            System.out.println(addMoreMoney);
-                            String userAnswer = userInput.nextLine();
+                                String addMoreMoney = "Do you want to add more money? Y/N";
+                                System.out.println(addMoreMoney);
+                                String userAnswer = userInput.nextLine();
 
-                            if (userAnswer.equalsIgnoreCase("y")) {
+                                if (userAnswer.equalsIgnoreCase("y")) {
 
-                                addMoney = true;
-                            } else if (userAnswer.equalsIgnoreCase("n")) {
+                                    addMoney = true;
+                                } else if (userAnswer.equalsIgnoreCase("n")) {
 
-                                addMoney = false;
+                                    addMoney = false;
+                                }
+                            } catch (NumberFormatException nfe) {
+                                System.out.println("Please enter a whole number");
                             }
 
                         } while (addMoney);
@@ -94,7 +101,7 @@ public class MainMenu {
                             System.out.println("Enter product code (i.e. A1, D3, etc.): \n");
                             String userCodeSelection = userInput.nextLine();
 
-                            //if item in stock then if they have the funds the purchase funds
+
 
                             Item item = vendingMachine.purchaseItem(userCodeSelection);
 

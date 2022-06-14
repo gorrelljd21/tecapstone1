@@ -53,7 +53,10 @@ public class Money {
         System.out.printf("Your change is: %s quarters, %s dimes, and %s nickels %n", qChange, dChange, nChange);
 
     }
-
+    public boolean isWholeNumber(BigDecimal fedMoney) {
+        double whole = (fedMoney.doubleValue() * 100);
+        return whole % 100 == 0;
+    }
 
 }
 
