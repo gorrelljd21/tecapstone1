@@ -137,7 +137,7 @@ public class MainMenu {
                     mainRunning = true;
                 }
             } catch (NumberFormatException nfe) {
-                System.out.print("Please limit your selection to '1', '2', or '3' ");
+                System.out.print("Please enter valid inputs per menu instructions \n");
             }
 
         } while (mainRunning);

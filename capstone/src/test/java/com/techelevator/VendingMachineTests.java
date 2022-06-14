@@ -22,15 +22,26 @@ public class VendingMachineTests {
     }
 
     @Test
+    public void returnsRightSlotLocationSelected_returnVALIDINPUT() {
+        //arrange
+        VendingMachine vendingMachine = new VendingMachine();
+
+        //act
+        Item actual = vendingMachine.purchaseItem("A1");
+
+        //
+        Assert.assertEquals(vendingMachine.purchaseItem("A1"), actual);
+    }
+
+    @Test
 
     public void whenNotWholeDollarAmount_returnNOTWHOLEDOLLAR() {
         //arrange
-        VendingMachine vendingMachine = new VendingMachine();
-        Money money = new Money();
 
         //act
 
         //assert
+
     }
 }
 
