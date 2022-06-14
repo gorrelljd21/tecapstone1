@@ -1,21 +1,32 @@
 package com.techelevator;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Money {
 
-    private BigDecimal quarter = BigDecimal.valueOf(25);
-    private BigDecimal dime = BigDecimal.valueOf(10);
-    private BigDecimal nickel = BigDecimal.valueOf(5);
-
+    private final BigDecimal QUARTER = BigDecimal.valueOf(25);
+    private final BigDecimal DIME = BigDecimal.valueOf(10);
+    private final BigDecimal NICKEL = BigDecimal.valueOf(5);
     private BigDecimal balance = new BigDecimal("0.00");
 
+
     public BigDecimal getBalance() {
+
         return balance;
+    }
+
+    public BigDecimal zeroBalance() {
+        BigDecimal zeroBalance = balance.subtract(balance);
+        return zeroBalance;
+    }
+
+    public void debitBalance(BigDecimal price) {
+
+        balance = balance.subtract(price);
+    }
+
+    public void addMoney(BigDecimal cash) {
+        balance = balance.add(cash);
     }
 
     public void makeChange(BigDecimal balance) {
@@ -25,16 +36,17 @@ public class Money {
         int dChange = 0;
         int nChange = 0;
 
-        while (balance.intValue() >= quarter.intValue()) {
+        while (balance.intValue() >= QUARTER.intValue()) {
             qChange += 1;
-            balance = balance.subtract(quarter);
+            balance = balance.subtract(QUARTER);
         }
-        while (balance.intValue() >= dime.intValue()) {
+        while (balance.intValue() >= DIME.intValue()) {
             dChange += 1;
-            balance = balance.subtract(dime);
-            while (balance.intValue() >= nickel.intValue()) {
+            balance = balance.subtract(DIME);
+
+            while (balance.intValue() >= NICKEL.intValue()) {
                 nChange += 1;
-                balance = balance.subtract(nickel);
+                balance = balance.subtract(NICKEL);
             }
         }
 
@@ -42,18 +54,6 @@ public class Money {
 
     }
 
-    public BigDecimal zeroBalance() {
-        BigDecimal zeroBalance = balance.subtract(balance);
-        return zeroBalance;
-    }
-
-    public void debitBalance(BigDecimal price) {
-        balance = balance.subtract(price);
-    }
-
-    public void addMoney(BigDecimal cash) {
-        balance = balance.add(cash);
-    }
 
 }
 

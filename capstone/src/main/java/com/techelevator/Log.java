@@ -14,8 +14,7 @@ public class Log {
     LocalDateTime date = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     String dateInLog = date.format(formatter);
-//
-//    File transactionLog = new File("log.txt");
+
 
     public void writeToLog(String interactionType, BigDecimal interactionBalance, BigDecimal newBalance) {
         try {
@@ -27,8 +26,6 @@ public class Log {
         } catch (FileNotFoundException fnf) {
             System.out.println("This shouldn't happen.");
         }
-
     }
-
 }
 

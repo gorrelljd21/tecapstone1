@@ -2,7 +2,7 @@ package com.techelevator;
 
 import java.math.BigDecimal;
 
-public abstract class Item{
+public abstract class Item {
 
     private String slotLocation;
     private String productName;
@@ -18,29 +18,34 @@ public abstract class Item{
     }
 
     public String getSlotLocation() {
+
         return slotLocation;
     }
 
     public String getProductName() {
+
         return productName;
     }
 
     public BigDecimal getPrice() {
+
         return price;
     }
 
     public void setPrice(BigDecimal price) {
+
         this.price = price;
     }
 
     public abstract String getSound();
 
     public int getStock() {
+
         return stock;
     }
 
-    public void debitStock(){
-        if(stock > 0){
+    public void debitStock() {
+        if (stock > 0) {
             stock = stock - 1;
         } else {
             setInStock(false);
@@ -48,12 +53,13 @@ public abstract class Item{
     }
 
     public boolean getIsInStock() {
+
         return isInStock;
     }
 
     public void setInStock(boolean inStock) {
+
         this.isInStock = inStock;
     }
-
 }
 
